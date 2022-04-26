@@ -1,5 +1,6 @@
 package it.majorbit.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class SpecieController {
 	
 	@PostMapping
 	@RequestMapping(value = "Crea")
-	public @ResponseBody ResponseEntity<Object> creaSpecie(@RequestBody Map<String, Object> parametri){
+	public @ResponseBody ResponseEntity<String> creaSpecie(@RequestBody Map<String, Object> parametri){
 		Integer idSpecie = (Integer) parametri.get("idSpecie");
 		String rarita = (String) parametri.get("rarita");
 		Integer codiceAnimale = (Integer) parametri.get("codiceAnimale");
@@ -41,10 +42,10 @@ public class SpecieController {
 		Specie specie = new Specie();
 		specie.setIdSpecie(idSpecie);
 		specie.setRarita(rarita);
-		specie.setAnimali(animale);
+		specie.setLista((List<Animale>) animale);
 		specie.setSettore(settore);
 		
-		return null;
+		return specieService.createSpecie(specie);
 	}
 
 }

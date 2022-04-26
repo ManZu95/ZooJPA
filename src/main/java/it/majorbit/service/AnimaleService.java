@@ -13,9 +13,9 @@ public class AnimaleService {
 	@Autowired
 	private AnimaleRepository animaleRepository;
 
-	public ResponseEntity<String> createAnimale(Animale animale) {
+	public ResponseEntity<Object> createAnimale(Animale animale) {
 		animaleRepository.save(animale);
-		return ResponseEntity.status(HttpStatus.OK).body("Aggiunta dell'animale avvenuta correttamente");
+		return ResponseEntity.status(HttpStatus.OK).body("Aggiunta dell'animale avvenuta correttamente:\n" + animale);
 	}
 
 	public ResponseEntity<Object> updateAnimale(Integer codice, Double eta, String nome) {

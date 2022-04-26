@@ -1,5 +1,8 @@
 package it.majorbit.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -13,13 +16,24 @@ public class Specie {
 	private Integer idSpecie;
 	private String rarita;
 	@OneToMany
-	private Animale animale;
+	private List<Animale> lista = new ArrayList<>();
 	@OneToOne
 	private Settore settore;
 	
 	public Specie() {
 		
 	}
+	
+
+	public List<Animale> getLista() {
+		return lista;
+	}
+
+
+	public void setLista(List<Animale> lista) {
+		this.lista = lista;
+	}
+
 
 	public Integer getIdSpecie() {
 		return idSpecie;
@@ -37,14 +51,6 @@ public class Specie {
 		this.rarita = rarita;
 	}
 
-	public Animale getAnimale() {
-		return animale;
-	}
-
-	public void setAnimali(Animale Animale) {
-		this.animale= Animale;
-	}
-
 	public Settore getSettore() {
 		return settore;
 	}
@@ -55,7 +61,7 @@ public class Specie {
 
 	@Override
 	public String toString() {
-		return "Specie [idSpecie=" + idSpecie + ", rarita=" + rarita + ", listaAnimali=" + animale + ", settore="
+		return "Specie [idSpecie=" + idSpecie + ", rarita=" + rarita + ", listaAnimali=" + lista + ", settore="
 				+ settore + "]";
 	}
 	

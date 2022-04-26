@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+
 import it.majorbit.model.Animale;
 import it.majorbit.service.AnimaleService;
 
@@ -28,7 +30,7 @@ public class AnimaleController {
 	
 	@PostMapping
 	@RequestMapping(value = "Crea")
-	public @ResponseBody ResponseEntity<String> createAnimale(@RequestBody Map<String, Object> parametri){
+	public @ResponseBody ResponseEntity<Object> createAnimale(@RequestBody Map<String, Object> parametri){
 		Double eta = (Double) parametri.get("eta");
 		String nome = (String) parametri.get("nome");
 		
@@ -38,7 +40,7 @@ public class AnimaleController {
 		
 		Animale animale = new Animale();
 		animale.setEta(eta);
-		animale.setNome(nome);
+		animale.setNome(nome);		
 		
 		return animaleService.createAnimale(animale);
 	}
